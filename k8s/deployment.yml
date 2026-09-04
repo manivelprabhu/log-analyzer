@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: log-analyzer
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: log-analyzer
+
+  template:
+    metadata:
+      labels:
+        app: log-analyzer
+
+    spec:
+      containers:
+        - name: log-analyzer
+          image: log-analyzer:1.2
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
